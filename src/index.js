@@ -3,11 +3,11 @@ const express = require('express');
 
 const app = express();
 
-const { PORT } = require('./config/server-config');
+const { PORT, FLIGHT_SERVICE_PATH } = require('./config/server-config');
 
 const ApiRoutes = require('./routes/index');
 
-const db = require('./models/index');
+// const db = require('./models/index');
 
 const setupAndStartServer = async () => {
 
@@ -18,9 +18,10 @@ const setupAndStartServer = async () => {
 
     app.listen(PORT, () => {
         console.log(`Flight Booking Service is running on PORT ${PORT}`);
-        if(process.env.DB_SYNC){
-            db.sequelize.sync({alter:true})
-        }
+        // if(process.env.DB_SYNC){
+        //     db.sequelize.sync({alter:true})
+        // }
+        console.log(FLIGHT_SERVICE_PATH);
     })
 
 }
